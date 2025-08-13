@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me - Aditya Singh Bagri</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- Custom styles for the enhanced form -->
+    <style>
+        .form-group {
+            position: relative;
+        }
+        .form-input-enhanced {
+            border: 1px solid #d1d5db; /* Tailwind gray-300 */
+            border-radius: 0.5rem; /* rounded-lg */
+            padding: 1rem;
+            width: 100%;
+            font-size: 1rem;
+            transition: border-color 0.2s ease-in-out;
+            background-color: #f9fafb; /* Tailwind gray-50 */
+        }
+        .form-input-enhanced:focus {
+            outline: none;
+            border-color: #2563eb; /* Tailwind blue-600 */
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        .form-label-enhanced {
+            position: absolute;
+            left: 1rem;
+            top: 1rem;
+            color: #6b7280; /* Tailwind gray-500 */
+            pointer-events: none;
+            transition: all 0.2s ease-out;
+            background-color: #f9fafb; /* Match input background */
+        }
+        /* State when input is focused or has content */
+        .form-input-enhanced:focus ~ .form-label-enhanced,
+        .form-input-enhanced:not(:placeholder-shown) ~ .form-label-enhanced {
+            top: -0.7rem;
+            left: 0.75rem;
+            font-size: 0.875rem; /* text-sm */
+            color: #2563eb; /* Tailwind blue-600 */
+            padding: 0 0.25rem;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800 font-sans">
+
+    <!-- Header Section -->
+    <header class="bg-white/90 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="{{ url_for('index') }}" class="text-2xl font-bold text-blue-600">ASB.</a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="{{ url_for('index') }}" class="nav-link">Home</a>
+                <a href="{{ url_for('index') }}#projects" class="nav-link">Projects</a>
+            </div>
+            <div class="flex items-center">
+                 <a href="{{ url_for('contact') }}" class="bg-blue-600 text-white rounded-full px-6 py-2.5 font-semibold hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 hidden md:block">
+                    Get In Touch
+                </a>
+                <button class="md:hidden ml-4 text-2xl" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white p-4">
+             <a href="{{ url_for('index') }}" class="block py-2 px-4 text-sm hover:bg-gray-100 rounded">Home</a>
+             <a href="{{ url_for('index') }}#projects" class="block py-2 px-4 text-sm hover:bg-gray-100 rounded">Projects</a>
+             <a href="{{ url_for('contact') }}" class="block text-center mt-4 bg-blue-600 text-white rounded-full px-5 py-2 hover:bg-blue-700 transition-all duration-300">
+                Get In Touch
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="bg-gradient-to-b from-blue-50 to-white">
+        <div class="container mx-auto px-6 py-24">
+            <div class="text-center mb-16">
+                <h1 class="section-title">Let's Connect</h1>
+                <p class="max-w-2xl mx-auto text-lg text-gray-600">
+                    Whether you have a question or just want to say hi, my inbox is always open.
+                </p>
+            </div>
+
+            <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Left Column: Contact Info Cards -->
+                <div class="lg:col-span-4 space-y-6 flex flex-col justify-center h-full">
+                    <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 flex items-center gap-5 transform hover:scale-105 transition-transform duration-300">
+                        <div class="bg-blue-100 text-blue-600 p-4 rounded-lg text-2xl">
+                           <i class="fas fa-envelope fa-fw"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Email Me</h3>
+                            <a href="mailto:Bagriaditya00@gmail.com" class="text-gray-600 hover:text-blue-600 transition-colors">Bagriaditya00@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 flex items-center gap-5 transform hover:scale-105 transition-transform duration-300">
+                        <div class="bg-blue-100 text-blue-600 p-4 rounded-lg text-2xl">
+                           <i class="fas fa-map-marker-alt fa-fw"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Location</h3>
+                            <p class="text-gray-600">Indore, Madhya Pradesh, India</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Contact Form Card -->
+                <div class="lg:col-span-8 bg-white p-8 md:p-12 rounded-xl shadow-2xl border border-gray-100">
+                    <h2 class="text-2xl font-bold mb-8 text-gray-800">Send me a message</h2>
+                    
+                    <!-- Success Message -->
+                    {% if success %}
+                    <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded-lg mb-6" role="alert">
+                        <p class="font-bold">Message Sent!</p>
+                        <p>Thank you for reaching out. I'll get back to you as soon as possible.</p>
+                    </div>
+                    {% endif %}
+                    
+                    <form action="{{ url_for('contact') }}" method="POST" class="space-y-8">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <!-- Name Input -->
+                            <div class="form-group">
+                                <input type="text" id="name" name="name" required class="form-input-enhanced" placeholder=" ">
+                                <label for="name" class="form-label-enhanced">Full Name</label>
+                            </div>
+                            <!-- Email Input -->
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" required class="form-input-enhanced" placeholder=" ">
+                                <label for="email" class="form-label-enhanced">Email Address</label>
+                            </div>
+                        </div>
+                        <!-- Message Textarea -->
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="5" required class="form-input-enhanced" placeholder=" "></textarea>
+                            <label for="message" class="form-label-enhanced">Your Message</label>
+                        </div>
+                        <div class="text-right">
+                            <button type="submit"
+                                    class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full focus:outline-none focus:shadow-outline transition-all duration-300 transform hover:scale-105">
+                                Send Message <i class="fas fa-paper-plane ml-2"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-100 py-8">
+        <div class="container mx-auto px-6 text-center text-gray-500">
+            <p>&copy; 2024 Aditya Singh Bagri. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
